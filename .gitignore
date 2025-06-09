@@ -43,3 +43,6 @@ pnpm-debug.log*
 
 # Firebase
 firebase-debug.log
+
+# Alexis pii
+int_firebase.js
