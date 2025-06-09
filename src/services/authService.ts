@@ -1,11 +1,12 @@
 import { Auth, signInWithRedirect, signOut, User as FirebaseUser } from 'firebase/auth';
 import { doc, getDoc, setDoc, serverTimestamp, Timestamp, Firestore } from 'firebase/firestore';
-import { googleProvider } from '@/lib/firebase';
 import type { UserProfile, AllowedUserEntry } from '@/types';
+import { googleProvider } from '@/lib/firebase';
 
 export const signInWithGoogleRedirect = async (auth: Auth): Promise<void> => {
   await signInWithRedirect(auth, googleProvider);
 };
+
 
 export const processFirebaseUser = async (
   firebaseUser: FirebaseUser,

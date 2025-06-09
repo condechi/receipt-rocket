@@ -1,16 +1,17 @@
 "use client";
 
+import React from 'react';
 import { useAuth } from '@/context/AuthContext';
-import { Button } from '@/components/ui/button';
-import { LogIn } from 'lucide-react';
+import { Button } from '../ui/button';
 
-export function LoginButton() {
+const LoginButton: React.FC = () => {
   const { signIn, loading } = useAuth();
 
   return (
-    <Button onClick={signIn} disabled={loading} size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground">
-      <LogIn className="mr-2 h-5 w-5" />
-      Login with Google
+    <Button onClick={signIn} disabled={loading}>
+      {loading ? 'Loading...' : 'Sign in with Google'}
     </Button>
   );
-}
+};
+
+export { LoginButton };

@@ -1,9 +1,8 @@
 "use client";
 
 import { useAuth } from '@/context/AuthContext';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+// import { Avatar, AvatarFallback, AvatarImage } from '@ src/components/ui/avatar';
 import { Button } from '@/components/ui/button';
-import { LogOut, Rocket } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,9 +11,11 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { LogOut, Rocket } from 'lucide-react';
 
 export function Header() {
-  const { currentUser, role, signOut } = useAuth();
+  const { firebaseUser, currentUser, role, signIn, signOut } = useAuth();
 
   const getInitials = (name: string | null | undefined) => {
     if (!name) return 'U';
@@ -28,7 +29,11 @@ export function Header() {
           <Rocket className="h-7 w-7 text-primary" />
           <h1 className="text-2xl font-bold font-headline">Receipt Rocket</h1>
         </div>
-        {currentUser && (
+        {firebaseUser ? (
+          // Logged in state
+          // Use currentUser for profile info, firebaseUser for authenticated check
+          // Ensure currentUser is not null before accessing its properties, although
+          // with firebaseUser present, currentUser should ideally be populated.
           <div className="flex items-center gap-4">
              <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -59,6 +64,11 @@ export function Header() {
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
+          </div>
+        ) : (
+          // Logged out state
+          <div className="flex items-center">
+             <Button onClick={signIn}>Sign in with Google</Button>
           </div>
         )}
       </div>

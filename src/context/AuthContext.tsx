@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import { onAuthStateChanged, getRedirectResult } from 'firebase/auth';
-import { auth, db } from '@/lib/firebase';
+import { auth, db, googleProvider } from '@/lib/firebase';
 import { processFirebaseUser, signInWithGoogleRedirect, signOutUser } from '@/services/authService';
 import type { FirebaseUser, UserProfile } from '@/types';
 
@@ -25,6 +25,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [isAllowed, setIsAllowed] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
 
+  // Effect to handle initial auth state and redirect results
   useEffect(() => {
     const processUser = async (user: FirebaseUser | null) => {
       if (user) {
@@ -33,6 +34,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         setCurrentUser(userProfile);
         setIsAllowed(isUserAllowed);
         setRole(userRole);
+        console.log("AuthContext: processUser finished. State:", { firebaseUser: user?.uid, userProfile, isUserAllowed, userRole });
       } else {
         setFirebaseUser(null);
         setCurrentUser(null);
@@ -46,6 +48,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     getRedirectResult(auth)
       .then(async (result) => {
         if (result && result.user) {
+          console.log("AuthContext: getRedirectResult found user:", result.user.uid);
           await processUser(result.user);
         } else {
           // If no redirect result, set up listener (handles direct page loads after login)
@@ -77,7 +80,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       setLoading(false);
     }
   };
-
   const signOut = async () => {
     setLoading(true);
     try {

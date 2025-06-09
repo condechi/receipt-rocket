@@ -28,12 +28,12 @@ const firebaseConfigValues = {
 // These are the exact placeholder strings that were in the template .env.local file.
 // If the values loaded from process.env match these, it means the user hasn't updated them.
 const placeholderTexts = {
-  apiKey: "AIzaSyAIAODH5biBx2E3Vfb9uK9CFiBtkiFt7lE",
-  authDomain: "receipt-rocket-q7pi9.firebaseapp.com",
-  projectId: "receipt-rocket-q7pi9",
-  storageBucket: "receipt-rocket-q7pi9.firebasestorage.app",
-  messagingSenderId: "1026381189533",
-  appId: "1:1026381189533:web:4280ff79b3ddf26ae09f74"
+  apiKey: "",
+  authDomain: "",
+  projectId: "",
+  storageBucket: "",
+  messagingSenderId: "",
+  appId: ""
 };
 
 // Check if any of the loaded config values still match the initial placeholder texts
@@ -129,11 +129,9 @@ if (missingKeys.length > 0) {
 // Initialize Firebase
 let app: FirebaseApp;
 if (!getApps().length) {
-  console.log('Firebase: Attempting to initialize with config:', firebaseConfigValues);
   app = initializeApp(firebaseConfigValues);
 } else {
   app = getApp();
-  // console.log('Firebase: Using existing app instance.');
 }
 
 const auth = getAuth(app);
