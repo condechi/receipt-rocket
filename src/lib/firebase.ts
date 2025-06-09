@@ -13,26 +13,51 @@ const firebaseConfigValues = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
+// Helper to convert camelCase to SNAKE_CASE for env var names
+const toSnakeCase = (str: string) => str.replace(/([A-Z])/g, '_$1').toUpperCase();
+
+// More specific check for placeholder values
+const placeholderTexts: Record<keyof typeof firebaseConfigValues, string> = {
+  apiKey: "YOUR_API_KEY_HERE",
+  authDomain: "YOUR_AUTH_DOMAIN_HERE",
+  projectId: "YOUR_PROJECT_ID_HERE",
+  storageBucket: "YOUR_STORAGE_BUCKET_HERE",
+  messagingSenderId: "YOUR_MESSAGING_SENDER_ID_HERE",
+  appId: "YOUR_APP_ID_HERE"
+};
+
+const unreplacedPlaceholders = (Object.keys(firebaseConfigValues) as Array<keyof typeof firebaseConfigValues>)
+  .filter(key => firebaseConfigValues[key] === placeholderTexts[key]);
+
+if (unreplacedPlaceholders.length > 0) {
+  const vars = unreplacedPlaceholders.map(key => `NEXT_PUBLIC_FIREBASE_${toSnakeCase(key)}`).join(', ');
+  const message = `Firebase config error: The following environment variables in .env.local still seem to contain placeholder values: ${vars}. Please replace them with your actual Firebase project credentials and restart the development server.`;
+  console.error(message);
+  throw new Error(message);
+}
+
 // Check for missing essential Firebase config values
 const essentialKeys: (keyof typeof firebaseConfigValues)[] = ['apiKey', 'authDomain', 'projectId'];
 const missingKeys = essentialKeys.filter(key => {
   const value = firebaseConfigValues[key];
-  return !value || value.trim() === ''; // Check for undefined, null, or empty string
+  return !value || String(value).trim() === ''; // Check for undefined, null, or empty string
 });
 
 if (missingKeys.length > 0) {
-  const message = `Firebase config error: The following required environment variables are missing or empty: ${missingKeys.map(key => `NEXT_PUBLIC_FIREBASE_${key.replace('firebase', '').toUpperCase()}`).join(', ')}. Please check your .env.local file, ensure all values are correctly set, and restart the Next.js development server.`;
+  const vars = missingKeys.map(key => `NEXT_PUBLIC_FIREBASE_${toSnakeCase(key)}`).join(', ');
+  const message = `Firebase config error: The following required environment variables are missing or empty: ${vars}. Please check your .env.local file, ensure all values are correctly set, and restart the Next.js development server.`;
   console.error(message);
-  // Throw an error to halt initialization if config is critically missing
   throw new Error(message);
 }
 
 // Initialize Firebase
 let app: FirebaseApp;
 if (!getApps().length) {
+  console.log('Firebase: Attempting to initialize with config:', firebaseConfigValues);
   app = initializeApp(firebaseConfigValues);
 } else {
   app = getApp();
+  // console.log('Firebase: Using existing app instance.');
 }
 
 const auth = getAuth(app);
