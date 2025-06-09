@@ -7,7 +7,6 @@
   packages = [
     pkgs.nodejs_20
     pkgs.zulu
-    pkgs.react-native-debugger
   ];
   # Sets environment variables in the workspace
   env = {};

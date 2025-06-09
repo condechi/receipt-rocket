@@ -28,12 +28,12 @@ const firebaseConfigValues = {
 // These are the exact placeholder strings that were in the template .env.local file.
 // If the values loaded from process.env match these, it means the user hasn't updated them.
 const placeholderTexts = {
-  apiKey: "AIzaSyAiUU5mFHHVjikhQ-apEMNGyP2w3h3h9pU",
-  authDomain: "receipt-rocket-cb960.firebaseapp.com",
-  projectId: "receipt-rocket-cb960",
-  storageBucket: "receipt-rocket-cb960.firebasestorage.app",
-  messagingSenderId: "1045904141666",
-  appId: "1:1045904141666:web:f464eba9ce91fdfa92903b"
+  apiKey: "AIzaSyAIAODH5biBx2E3Vfb9uK9CFiBtkiFt7lE",
+  authDomain: "receipt-rocket-q7pi9.firebaseapp.com",
+  projectId: "receipt-rocket-q7pi9",
+  storageBucket: "receipt-rocket-q7pi9.firebasestorage.app",
+  messagingSenderId: "1026381189533",
+  appId: "1:1026381189533:web:4280ff79b3ddf26ae09f74"
 };
 
 // Check if any of the loaded config values still match the initial placeholder texts
