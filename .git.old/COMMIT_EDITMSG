@@ -1,0 +1,80 @@
+Moved everything to root directory (second commit)
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch main
+# Changes to be committed:
+#	new file:   .gitignore
+#	modified:   .idx/dev.nix
+#	new file:   .modified
+#	modified:   README.md
+#	new file:   apphosting.yaml
+#	new file:   components.json
+#	new file:   console.html
+#	new file:   docs/blueprint.md
+#	new file:   next-env.d.ts
+#	new file:   next.config.ts
+#	new file:   package-lock.json
+#	new file:   package.json
+#	new file:   postcss.config.mjs
+#	new file:   receipt-rocket
+#	new file:   src/ai/dev.ts
+#	new file:   src/ai/genkit.ts
+#	new file:   src/app/favicon.ico
+#	new file:   src/app/globals.css
+#	new file:   src/app/layout.tsx
+#	new file:   src/app/page.tsx
+#	new file:   src/components/auth/AccessDenied.tsx
+#	new file:   src/components/auth/LoginButton.tsx
+#	new file:   src/components/expensify/CategoryManager.tsx
+#	new file:   src/components/expensify/ExpenseForm.tsx
+#	new file:   src/components/expensify/ImageUpload.tsx
+#	new file:   src/components/expensify/RecentExpensesList.tsx
+#	new file:   src/components/expensify/VendorAutocomplete.tsx
+#	new file:   src/components/layout/Header.tsx
+#	new file:   src/components/ui/LoadingSpinner.tsx
+#	new file:   src/components/ui/accordion.tsx
+#	new file:   src/components/ui/alert-dialog.tsx
+#	new file:   src/components/ui/alert.tsx
+#	new file:   src/components/ui/avatar.tsx
+#	new file:   src/components/ui/badge.tsx
+#	new file:   src/components/ui/button.tsx
+#	new file:   src/components/ui/calendar.tsx
+#	new file:   src/components/ui/card.tsx
+#	new file:   src/components/ui/chart.tsx
+#	new file:   src/components/ui/checkbox.tsx
+#	new file:   src/components/ui/dialog.tsx
+#	new file:   src/components/ui/dropdown-menu.tsx
+#	new file:   src/components/ui/form.tsx
+#	new file:   src/components/ui/input.tsx
+#	new file:   src/components/ui/label.tsx
+#	new file:   src/components/ui/menubar.tsx
+#	new file:   src/components/ui/popover.tsx
+#	new file:   src/components/ui/progress.tsx
+#	new file:   src/components/ui/radio-group.tsx
+#	new file:   src/components/ui/scroll-area.tsx
+#	new file:   src/components/ui/select.tsx
+#	new file:   src/components/ui/separator.tsx
+#	new file:   src/components/ui/sheet.tsx
+#	new file:   src/components/ui/sidebar.tsx
+#	new file:   src/components/ui/skeleton.tsx
+#	new file:   src/components/ui/slider.tsx
+#	new file:   src/components/ui/switch.tsx
+#	new file:   src/components/ui/table.tsx
+#	new file:   src/components/ui/tabs.tsx
+#	new file:   src/components/ui/textarea.tsx
+#	new file:   src/components/ui/toast.tsx
+#	new file:   src/components/ui/toaster.tsx
+#	new file:   src/components/ui/tooltip.tsx
+#	new file:   src/context/AuthContext.tsx
+#	new file:   src/hooks/use-mobile.tsx
+#	new file:   src/hooks/use-toast.ts
+#	new file:   src/lib/constants.ts
+#	new file:   src/lib/firebase.ts
+#	new file:   src/lib/utils.ts
+#	new file:   src/services/authService.ts
+#	new file:   src/services/expenseService.ts
+#	new file:   src/types/index.ts
+#	new file:   tailwind.config.ts
+#	new file:   tsconfig.json
+#
