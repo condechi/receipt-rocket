@@ -8,6 +8,9 @@
 # Testing
 /coverage
 
+# Private
+/priv
+
 # Next.js
 /.next/
 /out/
